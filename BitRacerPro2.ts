@@ -419,6 +419,47 @@ namespace BitRacerPro2 {
         pins.i2cWriteNumber(N76_ADDR, 0x66 + status, NumberFormat.UInt8LE, false)
     }
     /**
+    * 讀取角速度命令
+    */
+    //% color=#3dbfa1
+    //% weight=0
+    //% block="readOmegaCommand" advanced=true
+    export function readOmegaCommand(): number {
+        pins.i2cWriteNumber(N76_ADDR, 0x6A, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+    }
+    /**
+    * 讀取角度命令
+    */
+    //% color=#3dbfa1
+    //% weight=0
+    //% block="readThetaCommand" advanced=true
+    export function readThetaCommand(): number {
+        pins.i2cWriteNumber(N76_ADDR, 0x6B, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+    }
+    /**
+    * 讀取速度命令
+    */
+    //% color=#3dbfa1
+    //% weight=0
+    //% block="readVelCommand" advanced=true
+    export function readVelCommand(): number {
+        pins.i2cWriteNumber(N76_ADDR, 0x6C, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+    }
+    /**
+    * 讀取距離命令
+    */
+    //% color=#3dbfa1
+    //% weight=0
+    //% block="readPosCommand" advanced=true
+    export function readPosCommand(): number {
+        pins.i2cWriteNumber(N76_ADDR, 0x6D, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+    }
+
+    /**
     * 讀取電池電壓
     */
     //% color=#3dbfa1
