@@ -15,8 +15,8 @@
     "BitRacerPro2.control.acc|block": "加速",
     "BitRacerPro2.control.con|block": "等速",
     "BitRacerPro2.control.dec|block": "減速",
-    "BitRacerPro2.direction.right|block": "右邊",
-    "BitRacerPro2.direction.left|block": "左邊",
+    "BitRacerPro2.direction.right|block": "右轉",
+    "BitRacerPro2.direction.left|block": "左轉",
 
     "BitRacerPro2.motorRun|block": "馬達|%index 速度|%PWM",
     "BitRacerPro2.readIR|block": "讀取|%SensorID 感測器",
