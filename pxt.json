@@ -11,7 +11,6 @@
         "README.md",
         "BitRacerPro2.ts",
         "_locales/zh-TW/README.md"
-        "_locales/zh-TW/BitRacerPro-strings.json"
     ],
     "testFiles": [
         "test.ts"
