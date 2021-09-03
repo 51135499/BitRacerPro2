@@ -6,7 +6,7 @@ enum PingUnit {
 }
 //% weight=0 color=#f98020 icon="\uf1ba" block="BitRacer"
 namespace BitRacer {
-    let N76_ADDR = 0x10
+    export const N76_ADDR = 0x10
     export enum Motors {
         //% block="left"
         M_R = 0,
@@ -168,7 +168,7 @@ namespace BitRacer {
     */
     //% color=#3dbf53
     //% weight=20
-    //% block="Set Zero point"
+    //% block="Set Zero point" advanced=true
     export function SetZeropoint(): void {
         pins.i2cWriteNumber(N76_ADDR, 0x20, NumberFormat.UInt8LE, false)
     }
@@ -177,7 +177,7 @@ namespace BitRacer {
     */
     //% color=#3dbf53
     //% weight=20
-    //% block="read Angle Z"
+    //% block="read Angle Z" advanced=true
     export function ReadAngleZ(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x21, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
@@ -187,7 +187,7 @@ namespace BitRacer {
     */
     //% color=#3dbf53
     //% weight=20
-    //% block="read Gyro Z"
+    //% block="read Gyro Z" advanced=true
     export function ReadGyroZ(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x22, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
@@ -197,7 +197,7 @@ namespace BitRacer {
     */
     //% color=#3dbf53
     //% weight=20
-    //% block="read Accel Y"
+    //% block="read Accel Y" advanced=true
     export function ReadAccelY(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x23, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
@@ -207,7 +207,7 @@ namespace BitRacer {
     */
     //% color=#40994f
     //% weight=20
-    //% block="Observer Clear"
+    //% block="Observer Clear" advanced=true
     export function ObserverClear(): void {
         pins.i2cWriteNumber(N76_ADDR, 0x30, NumberFormat.UInt8LE, false)
     }
@@ -216,7 +216,7 @@ namespace BitRacer {
     */
     //% color=#40994f
     //% weight=20
-    //% block="Read Observer Distance"
+    //% block="Read Observer Distance" advanced=true
     export function ReadObserverDistance(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x31, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
@@ -226,7 +226,7 @@ namespace BitRacer {
     */
     //% color=#40994f
     //% weight=20
-    //% block="Read Observer Velocity"
+    //% block="Read Observer Velocity" advanced=true
     export function ReadObserverVelocity(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x32, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
@@ -238,7 +238,7 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="PID IR Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID IR Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setIR(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x40
@@ -258,7 +258,7 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="PID Pos Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID Pos Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setPos(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x43
@@ -278,7 +278,7 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="PID Theta Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID Theta Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x46
@@ -296,7 +296,7 @@ namespace BitRacer {
     * @param n 輪直徑, eg: 23
     */
     //% weight=14
-    //% block="Wheel |%n (mm)"
+    //% block="Wheel |%n (mm)" advanced=true
     export function setWheel(n: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x50
@@ -308,7 +308,7 @@ namespace BitRacer {
     * @param n 車寬, eg: 85
     */
     //% weight=14
-    //% block="CarWidth |%n (mm)"
+    //% block="CarWidth |%n (mm)" advanced=true
     export function setCarWidth(n: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x51
@@ -320,7 +320,7 @@ namespace BitRacer {
     * @param speed 速度, eg: 5
     */
     //% weight=14
-    //% block="BaseSpeed |%speed (m/s)"
+    //% block="BaseSpeed |%speed (m/s)" advanced=true
     export function setBaseSpeed(speed: number): void {
         let i2cbuf5 = pins.createBuffer(5)
         i2cbuf5[0] = 0x52
@@ -332,7 +332,7 @@ namespace BitRacer {
     * @param speed 速度, eg: 5
     */
     //% weight=14
-    //% block="MaxSpeed |%speed (m/s)"
+    //% block="MaxSpeed |%speed (m/s)" advanced=true
     export function setMaxSpeed(speed: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x53
@@ -344,7 +344,7 @@ namespace BitRacer {
     * @param acc 加速度, eg: 5
     */
     //% weight=14
-    //% block="Acceleration |%acc (m/s)"
+    //% block="Acceleration |%acc (m/s)" advanced=true
     export function setAcc(acc: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x54
@@ -356,7 +356,7 @@ namespace BitRacer {
     * @param alpha 角加速度, eg: 5
     */
     //% weight=14
-    //% block="Alpha |%alpha (m/s)"
+    //% block="Alpha |%alpha (m/s)" advanced=true
     export function setAlpha(alpha: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x55
@@ -368,7 +368,7 @@ namespace BitRacer {
     * @param status 開關
     */
     //% weight=14
-    //% block="carControl |%status"
+    //% block="carControl |%status" advanced=true
     export function carControl(status: Switch): void {
         pins.i2cWriteNumber(N76_ADDR, 0x56 + status, NumberFormat.UInt8LE, false)
     }
@@ -377,7 +377,7 @@ namespace BitRacer {
     * @param status 開關
     */
     //% weight=14
-    //% block="IR CorrectionMode |%status"
+    //% block="IR CorrectionMode |%status" advanced=true
     export function correctionMode(status: Switch): void {
         pins.i2cWriteNumber(N76_ADDR, 0x58 + status, NumberFormat.UInt8LE, false)
     }
@@ -385,8 +385,8 @@ namespace BitRacer {
     * 位置控制
     * @param status 控制狀態
     */
-    //% weight=14
-    //% block="positionControl |%status"
+    //% weight=9
+    //% block="positionControl |%status" advanced=true
     export function positionFlag(status: control): void {
         pins.i2cWriteNumber(N76_ADDR, 0x60 + status, NumberFormat.UInt8LE, false)
     }
@@ -394,8 +394,8 @@ namespace BitRacer {
     * 轉彎方向
     * @param status 方向
     */
-    //% weight=14
-    //% block="turnDirection |%status"
+    //% weight=8
+    //% block="turnDirection |%status" advanced=true
     export function turnDirection(status: direction): void {
         pins.i2cWriteNumber(N76_ADDR, 0x64 + status, NumberFormat.UInt8LE, false)
     }
@@ -403,8 +403,8 @@ namespace BitRacer {
     * 角度控制
     * @param status 控制狀態
     */
-    //% weight=14
-    //% block="thetaControl |%status"
+    //% weight=7
+    //% block="thetaControl |%status" advanced=true
     export function thetaFlag(status: control): void {
         pins.i2cWriteNumber(N76_ADDR, 0x66 + status, NumberFormat.UInt8LE, false)
     }
@@ -413,7 +413,7 @@ namespace BitRacer {
     */
     //% color=#3dbfa1
     //% weight=1
-    //% block="read Battery Voltage"
+    //% block="read Battery Voltage" advanced=true
     export function readBat(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x2F, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false) / 1000
@@ -423,7 +423,7 @@ namespace BitRacer {
     */
     //% color=#3dbfa1
     //% weight=0
-    //% block="read Battery Voltage"
+    //% block="read Battery Voltage" advanced=true
     export function readVersion(): number {
         pins.i2cWriteNumber(N76_ADDR, 0xFF, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
