@@ -10,6 +10,7 @@
     "files": [
         "README.md",
         "BitRacerPro2.ts"
+        "_locales/zh-TW/BitRacer-strings.json"
     ],
     "testFiles": [
         "test.ts"
