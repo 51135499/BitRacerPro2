@@ -23,7 +23,29 @@
     "BitRacerPro2.readIR2|block": "讀取 第|%SensorID 顆 感測器",
     "BitRacerPro2.CalibrateBegin|block": "校正開始",
     "BitRacerPro2.CalibrateEnd|block": "校正結束|%Color (線)",
-    "BitRacerPro2.readLine|block": "讀取線位置"
+    "BitRacerPro2.readLine|block": "讀取線位置",
 
-    
+    "BitRacerPro2.SetZeropoint|block": "陀螺儀零點校正",
+    "BitRacerPro2.ReadAngleZ|block": "讀取Z軸角度",
+    "BitRacerPro2.ReadGyroZ|block": "讀取Z軸角速度",
+    "BitRacerPro2.ReadAccelY|block": "讀取Y軸加速度",
+    "BitRacerPro2.ObserverClear|block": "清除觀測器數值",
+    "BitRacerPro2.ReadObserverDistance|block": "讀取距離",
+    "BitRacerPro2.ReadObserverVelocity|block": "讀取速度",
+    "BitRacerPro2.setIR|block": "車頭PID Kp|%Kp Ki|%Ki Kd|%Kd",
+    "BitRacerPro2.setPos|block": "位置PID Kp|%Kp Ki|%Ki Kd|%Kd",
+    "BitRacerPro2.setTheta|block": "角度PID Kp|%Kp Ki|%Ki Kd|%Kd",
+    "BitRacerPro2.setWheel|block": "輪子直徑 |%n (mm)",
+    "BitRacerPro2.setCarWidth|block": "設定車寬 |%n (mm)",
+    "BitRacerPro2.setBaseSpeed|block": "基礎速度 |%speed (m/s)",
+    "BitRacerPro2.setMaxSpeed|block": "最高速度 |%speed (m/s)",
+    "BitRacerPro2.setAcc|block": "加速度 |%acc (m/s)",
+    "BitRacerPro2.setAlpha|block": "角加速度 |%alpha (m/s)",
+    "BitRacerPro2.carControl|block": "自走車控制 |%status",
+    "BitRacerPro2.correctionMode|block": "紅外線吸線控制 |%status",
+    "BitRacerPro2.positionFlag|block": "速度控制 |%status",
+    "BitRacerPro2.turnDirection|block": "轉彎方向 |%status",
+    "BitRacerPro2.thetaFlag|block": "角度控制 |%status",
+    "BitRacerPro2.readBat|block": "讀取電池電壓",
+    "BitRacerPro2.readVersion|block": "讀取版本號"
 }

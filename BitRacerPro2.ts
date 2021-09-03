@@ -168,7 +168,7 @@ namespace BitRacerPro2 {
     */
     //% color=#3dbf53
     //% weight=20
-    //% block="Set Zero point" advanced=true
+    //% block="Set Gyro ZeroPoint" advanced=true
     export function SetZeropoint(): void {
         pins.i2cWriteNumber(N76_ADDR, 0x20, NumberFormat.UInt8LE, false)
     }
@@ -328,7 +328,7 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf5)
     }
     /**
-    * 設定基礎速度(公尺/秒)
+    * 設定最高速度(公尺/秒)
     * @param speed 速度, eg: 5
     */
     //% weight=14
