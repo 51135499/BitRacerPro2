@@ -45,7 +45,7 @@
     "BitRacerPro2.setAlpha|block": "角加速度 |%alpha (m/s)",
     "BitRacerPro2.carControl|block": "自走車控制 |%status",
     "BitRacerPro2.correctionMode|block": "紅外線吸線控制 |%status",
-    "BitRacerPro2.positionFlag|block": "速度控制 |%status",
+    "BitRacerPro2.positionFlag|block": "位置控制 |%status",
     "BitRacerPro2.turnDirection|block": "轉彎方向 |%status",
     "BitRacerPro2.thetaFlag|block": "角度控制 |%status",
     "BitRacerPro2.readBat|block": "讀取電池電壓",
