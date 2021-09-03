@@ -11,6 +11,8 @@
     "BitRacerPro2.LineColor.Black|block": "黑色",
     "BitRacerPro2.LEDs.LED_R|block": "右邊",
     "BitRacerPro2.LEDs.LED_L|block": "左邊",
+    "BitRacerPro2.Switch.on|block": "開啟",
+    "BitRacerPro2.Switch.off|block": "關閉",
     "BitRacerPro2.control.stop|block": "停止",
     "BitRacerPro2.control.acc|block": "加速",
     "BitRacerPro2.control.con|block": "等速",
