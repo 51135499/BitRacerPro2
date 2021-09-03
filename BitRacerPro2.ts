@@ -1,11 +1,12 @@
-let N76_ADDR = 16
 enum PingUnit {
     //% block="μs"
     MicroSeconds,
     //% block="cm"
     Centimeters
 }
-namespace BitRacer {
+//% weight=0 color=#f98020 icon="\uf1ba" block="BitRacer"
+namespace BitRacerPro2 {
+    let N76_ADDR = 0x10
     export enum Motors {
         //% blockId="left motor" block="left"
         M_R = 0,
@@ -273,9 +274,9 @@ namespace BitRacer {
         i2cbuf4.setNumber(NumberFormat.Float32LE, 1, Kd)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
     }
-    //% weight=15
+    //% weight=14
     //% blockId=setWheel block="set Wheel |%diameter (mm)"
-    //% diameter=23
+    // @param diameter describe parameter here, eg: 23
     export function setWheel(diameter: number): void {
         let i2cbuf5 = pins.createBuffer(5)
         i2cbuf5[0] = 0x50
