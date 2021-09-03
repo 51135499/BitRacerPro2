@@ -11,7 +11,8 @@
         "README.md",
         "main.blocks",
         "main.ts",
-        "BitRacerPro2.ts"
+        "BitRacerPro2.ts",
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"

@@ -45,7 +45,11 @@ namespace BitRacer {
         //% block="off"
         off = 1
     }
-
+    /**
+    * 控制馬達
+    * @param index 馬達選擇
+    * @param PWM 控制速度
+    */
     //% weight=100
     //% block="motor|%index|at speed|%PWM"
     //% PWM.min=-1000 PWM.max=1000
@@ -73,7 +77,10 @@ namespace BitRacer {
             pins.i2cWriteBuffer(N76_ADDR, i2cbuf);
         }
     }
-
+    /**
+    * 讀取紅外線數值
+    * @param SensorIDs 第x顆紅外線
+    */
     //% weight=99
     //% block="read |%SensorID sensor"
     //% SensorID.fieldEditor="gridpicker" SensorID.fieldOptions.columns=3
@@ -86,6 +93,10 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
+    /**
+    * 讀取紅外線數值
+    * @param SensorIDs 第x顆紅外線
+    */
     //% weight=98
     //% block="read |%SensorID sensor"
     //% SensorIDs.min=0 SensorIDs.max=4
@@ -98,6 +109,11 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
+    /**
+    * 設定LED燈
+    * @param LedPin LED燈腳位
+    * @param status LED燈狀態
+    */
     //% weight=97
     //% block="LED|%LedPin|%status"
     //% LedPin.fieldEditor="gridpicker" LedPin.fieldOptions.columns=1
@@ -111,7 +127,9 @@ namespace BitRacer {
         }
     }
 
-
+    /**
+    * 校正開始
+    */
     //% color=#2080ff
     //% weight=30
     //% block="Calibrate Begin"
@@ -123,8 +141,11 @@ namespace BitRacer {
             false
         )
     }
-
-    //% color=#2080ff
+    /**
+    * 校正結束
+    * @param Color 校正線條顏色
+    */
+    //% color=#2080ff                
     //% weight=29
     //% block="Calibrate End|%Color (Line)"
     //% Color.fieldEditor="gridpicker" Color.fieldOptions.columns=1
@@ -136,7 +157,9 @@ namespace BitRacer {
             false
         )
     }
-
+    /**
+    * 讀取線位置
+    */
     //% color=#2080ff
     //% weight=28
     //% block="read Line position"
@@ -149,6 +172,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16BE, false)
     }
+    /**
+    * 陀螺儀零點校正(執行後須等待1秒)
+    */
     //% color=#3dbf53
     //% weight=20
     //% block="Set Zero point"
@@ -160,6 +186,9 @@ namespace BitRacer {
             false
         )
     }
+    /**
+    * 讀取Z軸角度數值
+    */
     //% color=#3dbf53
     //% weight=20
     //% block="read Angle Z"
@@ -172,6 +201,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
+    /**
+    * 讀取Z軸角速度數值
+    */
     //% color=#3dbf53
     //% weight=20
     //% block="read Gyro Z"
@@ -184,6 +216,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
+    /**
+    * 讀取Y軸加速度數值
+    */
     //% color=#3dbf53
     //% weight=20
     //% block="read Accel Y"
@@ -196,6 +231,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
+    /**
+    * 清除觀測器數值
+    */
     //% color=#40994f
     //% weight=20
     //% block="Observer Clear"
@@ -207,6 +245,9 @@ namespace BitRacer {
             false
         )
     }
+    /**
+    * 讀取距離(mm)
+    */
     //% color=#40994f
     //% weight=20
     //% block="Read Observer Distance"
@@ -219,6 +260,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
+    /**
+    * 讀取速度(mm/ms)
+    */
     //% color=#40994f
     //% weight=20
     //% block="Read Observer Velocity"
@@ -231,7 +275,12 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
-
+    /**
+    * 設定紅外線控制PID參數
+    * @param Kp 比例增益, eg: 0
+    * @param Ki 積分增益, eg: 0
+    * @param Kd 微分增益, eg: 0
+    */
     //% weight=15
     //% block="set IR Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setIR(Kp: number, Ki: number, Kd: number): void {
@@ -246,6 +295,12 @@ namespace BitRacer {
         i2cbuf2.setNumber(NumberFormat.Float32LE, 1, Kd)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf2)
     }
+    /**
+    * 設定位置控制PID參數
+    * @param Kp 比例增益, eg: 0
+    * @param Ki 積分增益, eg: 0
+    * @param Kd 微分增益, eg: 0
+    */
     //% weight=15
     //% block="set Pos Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setPos(Kp: number, Ki: number, Kd: number): void {
@@ -260,6 +315,12 @@ namespace BitRacer {
         i2cbuf3.setNumber(NumberFormat.Float32LE, 1, Kd)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf3)
     }
+    /**
+    * 設定角度控制PID參數
+    * @param Kp 比例增益, eg: 0
+    * @param Ki 積分增益, eg: 0
+    * @param Kd 微分增益, eg: 0
+    */
     //% weight=15
     //% block="set Theta Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
@@ -275,8 +336,8 @@ namespace BitRacer {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
     }
     /**
-    * TODO: set Wheel diameter
-    * @param n describe parameter here, eg: 5
+    * 設定輪直徑
+    * @param n 輪直徑, eg: 23
     */
     //% weight=14
     //% block="set Wheel |%n (mm)"
@@ -286,6 +347,9 @@ namespace BitRacer {
         i2cbuf5.setNumber(NumberFormat.Float32LE, 1, n)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf5)
     }
+    /**
+    * 讀取電池電壓
+    */
     //% color=#3dbfa1
     //% weight=1
     //% block="read Battery Voltage"
@@ -298,6 +362,9 @@ namespace BitRacer {
         )
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false) / 1000
     }
+    /**
+    * 讀取版本號
+    */
     //% color=#3dbfa1
     //% weight=0
     //% block="read Battery Voltage"
