@@ -1,6 +1,6 @@
 {
-    "BitRacer.Motors.M_L|block": "左邊",
-    "BitRacer.Motors.M_R|block": "右邊",
+	"BitRacer.Motors.M_L|block": "左邊",
+	"BitRacer.Motors.M_R|block": "右邊",
 	"BitRacer.Motors.All|block": "全部",
 	"BitRacer.IR_Sensors.IR1|block": "紅外線1",
 	"BitRacer.IR_Sensors.IR2|block": "紅外線2",
