@@ -367,7 +367,7 @@ namespace BitRacerPro2 {
     * 自走車控制開關
     * @param status 開關
     */
-    //% weight=14
+    //% weight=80
     //% block="carControl |%status" advanced=true
     export function carControl(status: Switch): void {
         pins.i2cWriteNumber(N76_ADDR, 0x56 + status, NumberFormat.UInt8LE, false)
@@ -376,7 +376,7 @@ namespace BitRacerPro2 {
     * 紅外線吸線控制開關
     * @param status 開關
     */
-    //% weight=14
+    //% weight=79
     //% block="IR CorrectionMode |%status" advanced=true
     export function correctionMode(status: Switch): void {
         pins.i2cWriteNumber(N76_ADDR, 0x58 + status, NumberFormat.UInt8LE, false)
@@ -385,7 +385,7 @@ namespace BitRacerPro2 {
     * 位置控制
     * @param status 控制狀態
     */
-    //% weight=9
+    //% weight=75
     //% block="positionControl |%status" advanced=true
     export function positionFlag(status: control): void {
         pins.i2cWriteNumber(N76_ADDR, 0x60 + status, NumberFormat.UInt8LE, false)
@@ -394,7 +394,7 @@ namespace BitRacerPro2 {
     * 轉彎方向
     * @param status 方向
     */
-    //% weight=8
+    //% weight=73
     //% block="turnDirection |%status" advanced=true
     export function turnDirection(status: direction): void {
         pins.i2cWriteNumber(N76_ADDR, 0x64 + status, NumberFormat.UInt8LE, false)
@@ -403,7 +403,7 @@ namespace BitRacerPro2 {
     * 角度控制
     * @param status 控制狀態
     */
-    //% weight=7
+    //% weight=74
     //% block="thetaControl |%status" advanced=true
     export function thetaFlag(status: control): void {
         pins.i2cWriteNumber(N76_ADDR, 0x66 + status, NumberFormat.UInt8LE, false)
