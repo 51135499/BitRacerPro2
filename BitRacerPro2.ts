@@ -413,7 +413,7 @@ namespace BitRacer {
     */
     //% color=#3dbfa1
     //% weight=1
-    //% block="read Battery Voltage" advanced=true
+    //% block="readBatteryVoltage" advanced=true
     export function readBat(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x2F, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false) / 1000
@@ -423,7 +423,7 @@ namespace BitRacer {
     */
     //% color=#3dbfa1
     //% weight=0
-    //% block="read Battery Voltage" advanced=true
+    //% block="readVersion" advanced=true
     export function readVersion(): number {
         pins.i2cWriteNumber(N76_ADDR, 0xFF, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
