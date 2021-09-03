@@ -173,13 +173,31 @@ namespace BitRacerPro2 {
         pins.i2cWriteNumber(N76_ADDR, 0x20, NumberFormat.UInt8LE, false)
     }
     /**
+    * 清除所有控制變數
+    */
+    //% color=#40994f
+    //% weight=20
+    //% block="AllControlClear" advanced=true
+    export function AllControlClear(): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x21, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 清除觀測器數值
+    */
+    //% color=#40994f
+    //% weight=20
+    //% block="Observer Clear" advanced=true
+    export function ObserverClear(): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x22, NumberFormat.UInt8LE, false)
+    }
+    /**
     * 讀取Z軸角度數值
     */
     //% color=#3dbf53
     //% weight=20
     //% block="read Angle Z" advanced=true
     export function ReadAngleZ(): number {
-        pins.i2cWriteNumber(N76_ADDR, 0x21, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(N76_ADDR, 0x23, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -189,7 +207,7 @@ namespace BitRacerPro2 {
     //% weight=20
     //% block="read Gyro Z" advanced=true
     export function ReadGyroZ(): number {
-        pins.i2cWriteNumber(N76_ADDR, 0x22, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(N76_ADDR, 0x24, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -199,36 +217,28 @@ namespace BitRacerPro2 {
     //% weight=20
     //% block="read Accel Y" advanced=true
     export function ReadAccelY(): number {
-        pins.i2cWriteNumber(N76_ADDR, 0x23, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(N76_ADDR, 0x25, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
+
     /**
-    * 清除觀測器數值
-    */
-    //% color=#40994f
-    //% weight=20
-    //% block="Observer Clear" advanced=true
-    export function ObserverClear(): void {
-        pins.i2cWriteNumber(N76_ADDR, 0x30, NumberFormat.UInt8LE, false)
-    }
-    /**
-    * 讀取距離(mm)
+    * 讀取估測距離(mm)
     */
     //% color=#40994f
     //% weight=20
     //% block="Read Observer Distance" advanced=true
     export function ReadObserverDistance(): number {
-        pins.i2cWriteNumber(N76_ADDR, 0x31, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(N76_ADDR, 0x26, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
-    * 讀取速度(mm/ms)
+    * 讀取估測速度(mm/ms)
     */
     //% color=#40994f
     //% weight=20
     //% block="Read Observer Velocity" advanced=true
     export function ReadObserverVelocity(): number {
-        pins.i2cWriteNumber(N76_ADDR, 0x32, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(N76_ADDR, 0x27, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
