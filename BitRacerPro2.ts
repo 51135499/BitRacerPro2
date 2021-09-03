@@ -39,11 +39,27 @@ namespace BitRacer {
         //% block="left"
         LED_L = 16
     }
-    export enum LEDswitch {
+    export enum Switch {
         //% block="on"
-        on = 0,
+        on = 0x00,
         //% block="off"
-        off = 1
+        off = 0x01
+    }
+    export enum control {
+        //% block="stop"
+        stop = 0x00,
+        //% block="acc"
+        acc = 0x01,
+        //% block="con"
+        con = 0x02,
+        //% block="dec"
+        dec = 0x03
+    }
+    export enum direction {
+        //% block="right"
+        right = 0x00,
+        //% block="left"
+        left = 0x01
     }
     /**
     * 控制馬達
@@ -85,12 +101,7 @@ namespace BitRacer {
     //% block="read |%SensorID sensor"
     //% SensorID.fieldEditor="gridpicker" SensorID.fieldOptions.columns=3
     export function readIR(SensorID: IR_Sensors): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            SensorID,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, SensorID, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
     /**
@@ -101,12 +112,7 @@ namespace BitRacer {
     //% block="read |%SensorID sensor"
     //% SensorIDs.min=0 SensorIDs.max=4
     export function readIR2(SensorIDs: number): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            SensorIDs + 3,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, SensorIDs + 3, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
     /**
@@ -118,7 +124,7 @@ namespace BitRacer {
     //% block="LED|%LedPin|%status"
     //% LedPin.fieldEditor="gridpicker" LedPin.fieldOptions.columns=1
     //% status.fieldEditor="gridpicker" status.fieldOptions.columns=1
-    export function LED(LedPin: LEDs, status: LEDswitch): void {
+    export function LED(LedPin: LEDs, status: Switch): void {
         if (LedPin == LEDs.LED_R) {
             pins.digitalWritePin(DigitalPin.P8, status)
         }
@@ -134,12 +140,7 @@ namespace BitRacer {
     //% weight=30
     //% block="Calibrate Begin"
     export function CalibrateBegin(): void {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x09,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x09, NumberFormat.UInt8LE, false)
     }
     /**
     * 校正結束
@@ -150,12 +151,7 @@ namespace BitRacer {
     //% block="Calibrate End|%Color (Line)"
     //% Color.fieldEditor="gridpicker" Color.fieldOptions.columns=1
     export function CalibrateEnd(Color: LineColor): void {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            Color,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, Color, NumberFormat.UInt8LE, false)
     }
     /**
     * 讀取線位置
@@ -164,12 +160,7 @@ namespace BitRacer {
     //% weight=28
     //% block="read Line position"
     export function readLine(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x08,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x08, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16BE, false)
     }
     /**
@@ -179,12 +170,7 @@ namespace BitRacer {
     //% weight=20
     //% block="Set Zero point"
     export function SetZeropoint(): void {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x20,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x20, NumberFormat.UInt8LE, false)
     }
     /**
     * 讀取Z軸角度數值
@@ -193,12 +179,7 @@ namespace BitRacer {
     //% weight=20
     //% block="read Angle Z"
     export function ReadAngleZ(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x21,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x21, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -208,12 +189,7 @@ namespace BitRacer {
     //% weight=20
     //% block="read Gyro Z"
     export function ReadGyroZ(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x22,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x22, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -223,12 +199,7 @@ namespace BitRacer {
     //% weight=20
     //% block="read Accel Y"
     export function ReadAccelY(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x23,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x23, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -238,12 +209,7 @@ namespace BitRacer {
     //% weight=20
     //% block="Observer Clear"
     export function ObserverClear(): void {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x30,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x30, NumberFormat.UInt8LE, false)
     }
     /**
     * 讀取距離(mm)
@@ -252,12 +218,7 @@ namespace BitRacer {
     //% weight=20
     //% block="Read Observer Distance"
     export function ReadObserverDistance(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x31,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x31, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -267,12 +228,7 @@ namespace BitRacer {
     //% weight=20
     //% block="Read Observer Velocity"
     export function ReadObserverVelocity(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x32,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x32, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
     /**
@@ -282,18 +238,18 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="set IR Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID IR Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setIR(Kp: number, Ki: number, Kd: number): void {
-        let i2cbuf2 = pins.createBuffer(5)
-        i2cbuf2[0] = 0x40
-        i2cbuf2.setNumber(NumberFormat.Float32LE, 1, Kp)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf2)
-        i2cbuf2[0] = 0x41
-        i2cbuf2.setNumber(NumberFormat.Float32LE, 1, Ki)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf2)
-        i2cbuf2[0] = 0x42
-        i2cbuf2.setNumber(NumberFormat.Float32LE, 1, Kd)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf2)
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x40
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kp)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x41
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Ki)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x42
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kd)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     }
     /**
     * 設定位置控制PID參數
@@ -302,18 +258,18 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="set Pos Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID Pos Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setPos(Kp: number, Ki: number, Kd: number): void {
-        let i2cbuf3 = pins.createBuffer(5)
-        i2cbuf3[0] = 0x43
-        i2cbuf3.setNumber(NumberFormat.Float32LE, 1, Kp)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf3)
-        i2cbuf3[0] = 0x44
-        i2cbuf3.setNumber(NumberFormat.Float32LE, 1, Ki)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf3)
-        i2cbuf3[0] = 0x45
-        i2cbuf3.setNumber(NumberFormat.Float32LE, 1, Kd)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf3)
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x43
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kp)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x44
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Ki)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x45
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kd)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     }
     /**
     * 設定角度控制PID參數
@@ -322,30 +278,135 @@ namespace BitRacer {
     * @param Kd 微分增益, eg: 0
     */
     //% weight=15
-    //% block="set Theta Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="PID Theta Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
-        let i2cbuf4 = pins.createBuffer(5)
-        i2cbuf4[0] = 0x46
-        i2cbuf4.setNumber(NumberFormat.Float32LE, 1, Kp)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
-        i2cbuf4[0] = 0x47
-        i2cbuf4.setNumber(NumberFormat.Float32LE, 1, Ki)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
-        i2cbuf4[0] = 0x48
-        i2cbuf4.setNumber(NumberFormat.Float32LE, 1, Kd)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x46
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kp)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x47
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Ki)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+        i2cbuf[0] = 0x48
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Kd)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     }
     /**
     * 設定輪直徑
     * @param n 輪直徑, eg: 23
     */
     //% weight=14
-    //% block="set Wheel |%n (mm)"
+    //% block="Wheel |%n (mm)"
     export function setWheel(n: number): void {
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x50
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, n)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+    }
+    /**
+    * 設定車寬
+    * @param n 車寬, eg: 85
+    */
+    //% weight=14
+    //% block="CarWidth |%n (mm)"
+    export function setCarWidth(n: number): void {
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x51
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, n)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+    }
+    /**
+    * 設定基礎速度(公尺/秒)
+    * @param speed 速度, eg: 5
+    */
+    //% weight=14
+    //% block="BaseSpeed |%speed (m/s)"
+    export function setBaseSpeed(speed: number): void {
         let i2cbuf5 = pins.createBuffer(5)
-        i2cbuf5[0] = 0x50
-        i2cbuf5.setNumber(NumberFormat.Float32LE, 1, n)
+        i2cbuf5[0] = 0x52
+        i2cbuf5.setNumber(NumberFormat.Float32LE, 1, speed)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf5)
+    }
+    /**
+    * 設定基礎速度(公尺/秒)
+    * @param speed 速度, eg: 5
+    */
+    //% weight=14
+    //% block="MaxSpeed |%speed (m/s)"
+    export function setMaxSpeed(speed: number): void {
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x53
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, speed)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+    }
+    /**
+    * 設定加速度(公尺/秒)
+    * @param acc 加速度, eg: 5
+    */
+    //% weight=14
+    //% block="Acceleration |%acc (m/s)"
+    export function setAcc(acc: number): void {
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x54
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, acc)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+    }
+    /**
+    * 設定角加速度(公尺/秒)
+    * @param alpha 角加速度, eg: 5
+    */
+    //% weight=14
+    //% block="Alpha |%alpha (m/s)"
+    export function setAlpha(alpha: number): void {
+        let i2cbuf = pins.createBuffer(5)
+        i2cbuf[0] = 0x55
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, alpha)
+        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
+    }
+    /**
+    * 自走車控制開關
+    * @param status 開關
+    */
+    //% weight=14
+    //% block="carControl |%status"
+    export function carControl(status: Switch): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x56 + status, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 紅外線吸線控制開關
+    * @param status 開關
+    */
+    //% weight=14
+    //% block="IR CorrectionMode |%status"
+    export function correctionMode(status: Switch): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x58 + status, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 位置控制
+    * @param status 控制狀態
+    */
+    //% weight=14
+    //% block="positionControl |%status"
+    export function positionFlag(status: control): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x60 + status, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 轉彎方向
+    * @param status 方向
+    */
+    //% weight=14
+    //% block="turnDirection |%status"
+    export function turnDirection(status: direction): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x64 + status, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 角度控制
+    * @param status 控制狀態
+    */
+    //% weight=14
+    //% block="thetaControl |%status"
+    export function thetaFlag(status: control): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x66 + status, NumberFormat.UInt8LE, false)
     }
     /**
     * 讀取電池電壓
@@ -354,12 +415,7 @@ namespace BitRacer {
     //% weight=1
     //% block="read Battery Voltage"
     export function readBat(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0x2F,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0x2F, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false) / 1000
     }
     /**
@@ -369,12 +425,7 @@ namespace BitRacer {
     //% weight=0
     //% block="read Battery Voltage"
     export function readVersion(): number {
-        pins.i2cWriteNumber(
-            N76_ADDR,
-            0xFF,
-            NumberFormat.UInt8LE,
-            false
-        )
+        pins.i2cWriteNumber(N76_ADDR, 0xFF, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
     }
 }
