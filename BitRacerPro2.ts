@@ -5,49 +5,49 @@ enum PingUnit {
     Centimeters
 }
 //% weight=0 color=#f98020 icon="\uf1ba" block="BitRacer"
-namespace BitRacerPro2 {
+namespace BitRacer {
     let N76_ADDR = 0x10
     export enum Motors {
-        //% blockId="left motor" block="left"
+        //% block="left"
         M_R = 0,
-        //% blockId="right motor" block="right"
+        //% block="right"
         M_L = 1,
-        //% blockId="all motor" block="all"
+        //% block="all"
         All = 2
     }
     export enum IR_Sensors {
-        //% blockId="IR1_Sensors" block="IR1"
+        //% block="IR1"
         IR1 = 0x03,
-        //% blockId="IR2_Sensors" block="IR2"
+        //% block="IR2"
         IR2 = 0x04,
-        //% blockId="IR3_Sensors" block="IR3"
+        //% block="IR3"
         IR3 = 0x05,
-        //% blockId="IR4_Sensors" block="IR4"
+        //% block="IR4"
         IR4 = 0x06,
-        //% blockId="IR5_Sensors" block="IR5"
+        //% block="IR5"
         IR5 = 0x07
     }
     export enum LineColor {
-        //% blockId="White" block="White"
+        //% block="White"
         White = 0x0A,
-        //% blockId="Black" block="Black"
+        //% block="Black"
         Black = 0x0B
     }
     export enum LEDs {
-        //% blockId="LED_right" block="right"
+        //% block="right"
         LED_R = 8,
-        //% blockId="LED_left" block="left"
+        //% block="left"
         LED_L = 16
     }
     export enum LEDswitch {
-        //% blockId="on" block="on"
+        //% block="on"
         on = 0,
-        //% blockId="off" block="off"
+        //% block="off"
         off = 1
     }
 
     //% weight=100
-    //% blockId=motor_MotorRun block="motor|%index|at speed|%PWM"
+    //% block="motor|%index|at speed|%PWM"
     //% PWM.min=-1000 PWM.max=1000
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=3
     export function motorRun(index: Motors, PWM: number): void {
@@ -75,7 +75,7 @@ namespace BitRacerPro2 {
     }
 
     //% weight=99
-    //% blockId=sensor_readIR block="read |%SensorID sensor"
+    //% block="read |%SensorID sensor"
     //% SensorID.fieldEditor="gridpicker" SensorID.fieldOptions.columns=3
     export function readIR(SensorID: IR_Sensors): number {
         pins.i2cWriteNumber(
@@ -87,7 +87,7 @@ namespace BitRacerPro2 {
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
     //% weight=98
-    //% blockId=sensor_readIR2 block="read |%SensorID sensor"
+    //% block="read |%SensorID sensor"
     //% SensorIDs.min=0 SensorIDs.max=4
     export function readIR2(SensorIDs: number): number {
         pins.i2cWriteNumber(
@@ -99,7 +99,7 @@ namespace BitRacerPro2 {
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
     }
     //% weight=97
-    //% blockId=LED_Set block="LED|%LedPin|%status"
+    //% block="LED|%LedPin|%status"
     //% LedPin.fieldEditor="gridpicker" LedPin.fieldOptions.columns=1
     //% status.fieldEditor="gridpicker" status.fieldOptions.columns=1
     export function LED(LedPin: LEDs, status: LEDswitch): void {
@@ -114,7 +114,7 @@ namespace BitRacerPro2 {
 
     //% color=#2080ff
     //% weight=30
-    //% blockId=sensor_StartSampling block="Calibrate Begin"
+    //% block="Calibrate Begin"
     export function CalibrateBegin(): void {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -126,7 +126,7 @@ namespace BitRacerPro2 {
 
     //% color=#2080ff
     //% weight=29
-    //% blockId=sensor_EndSampling block="Calibrate End|%Color (Line)"
+    //% block="Calibrate End|%Color (Line)"
     //% Color.fieldEditor="gridpicker" Color.fieldOptions.columns=1
     export function CalibrateEnd(Color: LineColor): void {
         pins.i2cWriteNumber(
@@ -139,7 +139,7 @@ namespace BitRacerPro2 {
 
     //% color=#2080ff
     //% weight=28
-    //% blockId=sensor_Line block="read Line position"
+    //% block="read Line position"
     export function readLine(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -151,7 +151,7 @@ namespace BitRacerPro2 {
     }
     //% color=#3dbf53
     //% weight=20
-    //% blockId=Set_Zero_point block="Set Zero point"
+    //% block="Set Zero point"
     export function SetZeropoint(): void {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -162,7 +162,7 @@ namespace BitRacerPro2 {
     }
     //% color=#3dbf53
     //% weight=20
-    //% blockId=Read_Angle_Z block="read Angle Z"
+    //% block="read Angle Z"
     export function ReadAngleZ(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -174,7 +174,7 @@ namespace BitRacerPro2 {
     }
     //% color=#3dbf53
     //% weight=20
-    //% blockId=Read_Gyro_Z block="read Gyro Z"
+    //% block="read Gyro Z"
     export function ReadGyroZ(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -186,7 +186,7 @@ namespace BitRacerPro2 {
     }
     //% color=#3dbf53
     //% weight=20
-    //% blockId=Read_Accel_Y block="read Accel Y"
+    //% block="read Accel Y"
     export function ReadAccelY(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -198,7 +198,7 @@ namespace BitRacerPro2 {
     }
     //% color=#40994f
     //% weight=20
-    //% blockId=Observer_Clear block="Observer Clear"
+    //% block="Observer Clear"
     export function ObserverClear(): void {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -209,7 +209,7 @@ namespace BitRacerPro2 {
     }
     //% color=#40994f
     //% weight=20
-    //% blockId=Read_Observer_Distance block="Read Observer Distance"
+    //% block="Read Observer Distance"
     export function ReadObserverDistance(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -221,7 +221,7 @@ namespace BitRacerPro2 {
     }
     //% color=#40994f
     //% weight=20
-    //% blockId=Read_Observer_Velocity block="Read Observer Velocity"
+    //% block="Read Observer Velocity"
     export function ReadObserverVelocity(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -233,7 +233,7 @@ namespace BitRacerPro2 {
     }
 
     //% weight=15
-    //% blockId=setIR_Parm block="set IR Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="set IR Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setIR(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf2 = pins.createBuffer(5)
         i2cbuf2[0] = 0x40
@@ -247,7 +247,7 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf2)
     }
     //% weight=15
-    //% blockId=setPos_Parm block="set Pos Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="set Pos Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setPos(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf3 = pins.createBuffer(5)
         i2cbuf3[0] = 0x43
@@ -261,7 +261,7 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf3)
     }
     //% weight=15
-    //% blockId=setTheta_Parm block="set Theta Kp|%Kp Ki|%Ki Kd|%Kd"
+    //% block="set Theta Kp|%Kp Ki|%Ki Kd|%Kd"
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf4 = pins.createBuffer(5)
         i2cbuf4[0] = 0x46
@@ -274,18 +274,21 @@ namespace BitRacerPro2 {
         i2cbuf4.setNumber(NumberFormat.Float32LE, 1, Kd)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf4)
     }
+    /**
+    * TODO: set Wheel diameter
+    * @param n describe parameter here, eg: 5
+    */
     //% weight=14
-    //% blockId=setWheel block="set Wheel |%diameter (mm)"
-    // @param diameter describe parameter here, eg: 23
-    export function setWheel(diameter: number): void {
+    //% block="set Wheel |%n (mm)"
+    export function setWheel(n: number): void {
         let i2cbuf5 = pins.createBuffer(5)
         i2cbuf5[0] = 0x50
-        i2cbuf5.setNumber(NumberFormat.Float32LE, 1, diameter)
+        i2cbuf5.setNumber(NumberFormat.Float32LE, 1, n)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf5)
     }
     //% color=#3dbfa1
     //% weight=1
-    //% blockId=readBatteryVoltage block="read Battery Voltage"
+    //% block="read Battery Voltage"
     export function readBat(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
@@ -297,7 +300,7 @@ namespace BitRacerPro2 {
     }
     //% color=#3dbfa1
     //% weight=0
-    //% blockId=readBatteryVoltage block="read Battery Voltage"
+    //% block="read Battery Voltage"
     export function readVersion(): number {
         pins.i2cWriteNumber(
             N76_ADDR,
