@@ -102,7 +102,7 @@ namespace BitRacerPro2 {
     //% SensorID.fieldEditor="gridpicker" SensorID.fieldOptions.columns=3
     export function readIR(SensorID: IR_Sensors): number {
         pins.i2cWriteNumber(N76_ADDR, SensorID, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16LE, false)
     }
     /**
     * 讀取紅外線數值
@@ -113,7 +113,7 @@ namespace BitRacerPro2 {
     //% SensorIDs.min=0 SensorIDs.max=4
     export function readIR2(SensorIDs: number): number {
         pins.i2cWriteNumber(N76_ADDR, SensorIDs + 3, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16LE, false)
     }
     /**
     * 設定LED燈
@@ -161,7 +161,7 @@ namespace BitRacerPro2 {
     //% block="read Line position"
     export function readLine(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x08, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
     }
     /**
     * 陀螺儀零點校正(執行後須等待1秒)
@@ -198,7 +198,7 @@ namespace BitRacerPro2 {
     //% block="read Angle Z" advanced=true
     export function ReadAngleZ(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x23, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取Z軸角速度數值
@@ -208,7 +208,7 @@ namespace BitRacerPro2 {
     //% block="read Gyro Z" advanced=true
     export function ReadGyroZ(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x24, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取Y軸加速度數值
@@ -218,7 +218,7 @@ namespace BitRacerPro2 {
     //% block="read Accel Y" advanced=true
     export function ReadAccelY(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x25, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
 
     /**
@@ -229,7 +229,7 @@ namespace BitRacerPro2 {
     //% block="Read Observer Distance" advanced=true
     export function ReadObserverDistance(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x26, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取估測速度(mm/ms)
@@ -239,7 +239,7 @@ namespace BitRacerPro2 {
     //% block="Read Observer Velocity" advanced=true
     export function ReadObserverVelocity(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x27, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 設定紅外線控制PID參數
@@ -426,7 +426,7 @@ namespace BitRacerPro2 {
     //% block="readOmegaCommand" advanced=true
     export function readOmegaCommand(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x6A, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取角度命令
@@ -436,7 +436,7 @@ namespace BitRacerPro2 {
     //% block="readThetaCommand" advanced=true
     export function readThetaCommand(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x6B, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取速度命令
@@ -446,7 +446,7 @@ namespace BitRacerPro2 {
     //% block="readVelCommand" advanced=true
     export function readVelCommand(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x6C, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
     /**
     * 讀取距離命令
@@ -456,7 +456,7 @@ namespace BitRacerPro2 {
     //% block="readPosCommand" advanced=true
     export function readPosCommand(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x6D, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
 
     /**
@@ -467,7 +467,7 @@ namespace BitRacerPro2 {
     //% block="readBatteryVoltage" advanced=true
     export function readBat(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x2F, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16BE, false) / 1000
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.UInt16LE, false) / 1000
     }
     /**
     * 讀取版本號
@@ -477,6 +477,6 @@ namespace BitRacerPro2 {
     //% block="readVersion" advanced=true
     export function readVersion(): number {
         pins.i2cWriteNumber(N76_ADDR, 0xFF, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32BE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Float32LE, false)
     }
 }
