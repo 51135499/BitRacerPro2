@@ -372,7 +372,7 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     } 
     /**
-    * 設定加速度(公尺/秒平方)
+    * 設定加速度與角加速度
     * @param acc 加速度, eg: 5
     * @param alpha 角加速度, eg: 5
     */
