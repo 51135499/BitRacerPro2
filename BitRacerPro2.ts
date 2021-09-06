@@ -267,7 +267,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15
+    //% weight=15 group="PID"
     //% block="PID Pos Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setPos(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -287,7 +287,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15
+    //% weight=15 group="PID"
     //% block="PID Theta Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -305,7 +305,7 @@ namespace BitRacerPro2 {
     * 設定輪直徑
     * @param n 輪直徑, eg: 23
     */
-    //% weight=14
+    //% weight=14 group="PID"
     //% block="Wheel |%n (mm)" advanced=true
     export function setWheel(n: number): void {
         let i2cbuf = pins.createBuffer(5)
