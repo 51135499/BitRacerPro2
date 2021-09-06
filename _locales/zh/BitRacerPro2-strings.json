@@ -35,9 +35,15 @@
     "BitRacerPro2.ObserverClear|block": "清除觀測器數值",
     "BitRacerPro2.ReadObserverDistance|block": "讀取估測距離",
     "BitRacerPro2.ReadObserverVelocity|block": "讀取估測速度",
+    
     "BitRacerPro2.setIR|block": "車頭PID Kp|%Kp Ki|%Ki Kd|%Kd",
     "BitRacerPro2.setPos|block": "位置PID Kp|%Kp Ki|%Ki Kd|%Kd",
     "BitRacerPro2.setTheta|block": "角度PID Kp|%Kp Ki|%Ki Kd|%Kd",
+    "BitRacerPro2.savePosData|block": "儲存位置控制資料",
+    "BitRacerPro2.saveThetaData|block": "儲存角度控制資料",
+    "BitRacerPro2.writeSpeedOrOmega|block": "序列 寫入速度或角速度|%n筆資料",
+    "BitRacerPro2.writePositionOrTheta|block": "序列 寫入位置或角度|%n筆資料",
+
     "BitRacerPro2.setWheel|block": "輪子直徑 |%n (mm)",
     "BitRacerPro2.setCarWidth|block": "設定車寬 |%n (mm)",
     "BitRacerPro2.setBaseSpeed|block": "基礎速度 |%speed (m/s)",

@@ -321,10 +321,11 @@ namespace BitRacerPro2 {
     }
     /**
     * 序列寫入 速度/角速度 資料
+    * @param n 資料數量, eg: 1500
     */
     //% color=#002050
     //% weight=14 group="PID" 
-    //% block="writeSpeedOrOmega" advanced=true
+    //% block="writeSpeedOrOmega |%n" advanced=true
     //% n.min=0 n.max=1500
     export function writeSpeedOrOmega(n: number): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4E, NumberFormat.UInt8LE, false)
@@ -338,10 +339,11 @@ namespace BitRacerPro2 {
     } 
     /**
     * 序列寫入 速度/角速度 資料
+    * @param n 資料數量, eg: 1500
     */
     //% color=#002050
     //% weight=13 group="PID"
-    //% block="writePositionOrTheta" advanced=true
+    //% block="writePositionOrTheta |%n" advanced=true
     //% n.min=0 n.max=1500
     export function writePositionOrTheta(n:number): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4F, NumberFormat.UInt8LE, false)
