@@ -357,7 +357,8 @@ namespace BitRacerPro2 {
     } 
     /**
     * 設定輪直徑與輪距
-    * @param n 輪直徑, eg: 23
+    * @param diameter 輪直徑, eg: 23
+    * @param Wheelbase 輪距, eg: 85
     */
     //% weight=14
     //% block="Wheel Diameter(mm)|%diameter Wheelbase(mm)|%Wheelbase" advanced=true
