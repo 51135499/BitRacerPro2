@@ -172,7 +172,9 @@ namespace BitRacerPro2 {
     //% weight=20
     //% block="Set Gyro ZeroPoint" advanced=true
     export function SetZeropoint(): void {
+        basic.pause(50)
         pins.i2cWriteNumber(N76_ADDR, 0x20, NumberFormat.UInt8LE, false)
+        basic.pause(1050)
     }
     /**
     * 清除所有控制變數
