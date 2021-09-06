@@ -163,6 +163,8 @@ namespace BitRacerPro2 {
         pins.i2cWriteNumber(N76_ADDR, 0x08, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
     }
+
+    
     /**
     * 陀螺儀零點校正(執行後須等待1秒)
     */
@@ -247,7 +249,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15
+    //% weight=15 group="PID"
     //% block="PID IR Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setIR(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -302,10 +304,58 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     }
     /**
+    * 儲存位置資料
+    */
+    //% weight=20 group="PID"
+    //% block="savePosData" advanced=true
+    export function savePosData(): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x4C, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 儲存角度資料
+    */
+    //% weight=20 group="PID"
+    //% block="saveThetaData" advanced=true
+    export function saveThetaData(): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x4D, NumberFormat.UInt8LE, false)
+    }
+    /**
+    * 序列寫入 速度/角速度 資料
+    */
+    //% weight=20 group="PID" color =#002050
+    //% block="saveThetaData" advanced=true
+    //% n.min=0 n.max=1500
+    export function readData1(n: number): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x4E, NumberFormat.UInt8LE, false)
+        for (let index = 0; index < n; index++) {
+            let data: number[] = []
+            data[0] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
+            data[1] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
+            serial.writeNumbers(data)
+            basic.pause(10)
+        }
+    } 
+    /**
+    * 序列寫入 速度/角速度 資料
+    */
+    //% weight=20 group="PID" color =#002050
+    //% block="saveThetaData" advanced=true
+    //% n.min=0 n.max=1500
+    export function readData2(n:number): void {
+        pins.i2cWriteNumber(N76_ADDR, 0x4F, NumberFormat.UInt8LE, false)
+        for (let index = 0; index < n; index++) {
+            let data: number[] = []
+            data[0] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
+            data[1] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
+            serial.writeNumbers(data)
+            basic.pause(10)
+        }
+    } 
+    /**
     * 設定輪直徑
     * @param n 輪直徑, eg: 23
     */
-    //% weight=14 group="PID"
+    //% weight=14
     //% block="Wheel |%n (mm)" advanced=true
     export function setWheel(n: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -325,30 +375,7 @@ namespace BitRacerPro2 {
         i2cbuf.setNumber(NumberFormat.Float32LE, 1, n)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     }
-    /**
-    * 設定基礎速度(公尺/秒)
-    * @param speed 速度, eg: 5
-    */
-    //% weight=14
-    //% block="BaseSpeed |%speed (m/s)" advanced=true
-    export function setBaseSpeed(speed: number): void {
-        let i2cbuf5 = pins.createBuffer(5)
-        i2cbuf5[0] = 0x52
-        i2cbuf5.setNumber(NumberFormat.Float32LE, 1, speed)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf5)
-    }
-    /**
-    * 設定最高速度(公尺/秒)
-    * @param speed 速度, eg: 5
-    */
-    //% weight=14
-    //% block="MaxSpeed |%speed (m/s)" advanced=true
-    export function setMaxSpeed(speed: number): void {
-        let i2cbuf = pins.createBuffer(5)
-        i2cbuf[0] = 0x53
-        i2cbuf.setNumber(NumberFormat.Float32LE, 1, speed)
-        pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
-    }
+
     /**
     * 設定加速度(公尺/秒)
     * @param acc 加速度, eg: 5
