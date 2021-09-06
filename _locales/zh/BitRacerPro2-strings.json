@@ -52,8 +52,8 @@
     "BitRacerPro2.thetaFlag|block": "角度控制 |%status",
     "BitRacerPro2.readOmegaCommand|block": "讀取角速度命令",
     "BitRacerPro2.readThetaCommand|block": "讀取角度命令",
-    "BitRacerPro2.readVelCommand|block": "讀取速度命令",
-    "BitRacerPro2.readPosCommand|block": "讀取距離命令",
+    "BitRacerPro2.readVelCommand|block": "讀取速度命令(m/s)",
+    "BitRacerPro2.readPosCommand|block": "讀取距離命令(mm)",
     "BitRacerPro2.readBat|block": "讀取電池電壓",
     "BitRacerPro2.readVersion|block": "讀取版本號"
 }
