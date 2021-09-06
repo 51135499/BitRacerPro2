@@ -372,25 +372,17 @@ namespace BitRacerPro2 {
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
     } 
     /**
-    * 設定加速度(公尺/秒)
+    * 設定加速度(公尺/秒平方)
     * @param acc 加速度, eg: 5
+    * @param alpha 角加速度, eg: 5
     */
     //% weight=14
-    //% block="Acceleration |%acc (m/s)" advanced=true
-    export function setAcc(acc: number): void {
+    //% block="Acceleration(m/s2)|%acc Alpha(m/s2)|%alpha" advanced=true
+    export function setAccAlpha(acc: number, alpha: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x54
         i2cbuf.setNumber(NumberFormat.Float32LE, 1, acc)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
-    }
-    /**
-    * 設定角加速度(公尺/秒)
-    * @param alpha 角加速度, eg: 5
-    */
-    //% weight=14
-    //% block="Alpha |%alpha (m/s)" advanced=true
-    export function setAlpha(alpha: number): void {
-        let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x55
         i2cbuf.setNumber(NumberFormat.Float32LE, 1, alpha)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
