@@ -249,7 +249,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15 group="PID"
+    //% weight=19 group="PID"
     //% block="PID IR Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setIR(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -269,7 +269,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15 group="PID"
+    //% weight=18 group="PID"
     //% block="PID Pos Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setPos(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -289,7 +289,7 @@ namespace BitRacerPro2 {
     * @param Ki 積分增益, eg: 0
     * @param Kd 微分增益, eg: 0
     */
-    //% weight=15 group="PID"
+    //% weight=17 group="PID"
     //% block="PID Theta Kp|%Kp Ki|%Ki Kd|%Kd" advanced=true
     export function setTheta(Kp: number, Ki: number, Kd: number): void {
         let i2cbuf = pins.createBuffer(5)
@@ -306,7 +306,7 @@ namespace BitRacerPro2 {
     /**
     * 儲存位置資料
     */
-    //% weight=20 group="PID"
+    //% weight=16 group="PID"
     //% block="savePosData" advanced=true
     export function savePosData(): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4C, NumberFormat.UInt8LE, false)
@@ -314,7 +314,7 @@ namespace BitRacerPro2 {
     /**
     * 儲存角度資料
     */
-    //% weight=20 group="PID"
+    //% weight=15 group="PID"
     //% block="saveThetaData" advanced=true
     export function saveThetaData(): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4D, NumberFormat.UInt8LE, false)
@@ -322,10 +322,11 @@ namespace BitRacerPro2 {
     /**
     * 序列寫入 速度/角速度 資料
     */
-    //% weight=20 group="PID" color =#002050
-    //% block="saveThetaData" advanced=true
+    //% color=#002050
+    //% weight=14 group="PID" 
+    //% block="writeSpeedOrOmega" advanced=true
     //% n.min=0 n.max=1500
-    export function readData1(n: number): void {
+    export function writeSpeedOrOmega(n: number): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4E, NumberFormat.UInt8LE, false)
         for (let index = 0; index < n; index++) {
             let data: number[] = []
@@ -338,10 +339,11 @@ namespace BitRacerPro2 {
     /**
     * 序列寫入 速度/角速度 資料
     */
-    //% weight=20 group="PID" color =#002050
-    //% block="saveThetaData" advanced=true
+    //% color=#002050
+    //% weight=13 group="PID"
+    //% block="writePositionOrTheta" advanced=true
     //% n.min=0 n.max=1500
-    export function readData2(n:number): void {
+    export function writePositionOrTheta(n:number): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4F, NumberFormat.UInt8LE, false)
         for (let index = 0; index < n; index++) {
             let data: number[] = []
