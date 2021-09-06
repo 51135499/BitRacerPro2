@@ -43,8 +43,7 @@
     "BitRacerPro2.saveThetaData|block": "儲存角度控制資料",
     "BitRacerPro2.writeSpeedOrOmega|block": "序列 寫入速度或角速度|%n筆資料",
     "BitRacerPro2.writePositionOrTheta|block": "序列 寫入位置或角度|%n筆資料",
-
-    "BitRacerPro2.setWheel|block": "輪子直徑 |%n (mm)",
+    "BitRacerPro2.setWheel|block": "輪直徑(mm)|%diameter 輪距(mm)|%Wheelbase",
     "BitRacerPro2.setCarWidth|block": "設定車寬 |%n (mm)",
     "BitRacerPro2.setBaseSpeed|block": "基礎速度 |%speed (m/s)",
     "BitRacerPro2.setMaxSpeed|block": "最高速度 |%speed (m/s)",

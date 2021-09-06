@@ -356,30 +356,20 @@ namespace BitRacerPro2 {
         }
     } 
     /**
-    * 設定輪直徑
+    * 設定輪直徑與輪距
     * @param n 輪直徑, eg: 23
     */
     //% weight=14
-    //% block="Wheel |%n (mm)" advanced=true
-    export function setWheel(n: number): void {
+    //% block="Wheel Diameter(mm)|%diameter Wheelbase(mm)|%Wheelbase" advanced=true
+    export function setWheel(diameter: number, Wheelbase: number): void {
         let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x50
-        i2cbuf.setNumber(NumberFormat.Float32LE, 1, n)
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, diameter)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
-    }
-    /**
-    * 設定車寬
-    * @param n 車寬, eg: 85
-    */
-    //% weight=14
-    //% block="CarWidth |%n (mm)" advanced=true
-    export function setCarWidth(n: number): void {
-        let i2cbuf = pins.createBuffer(5)
         i2cbuf[0] = 0x51
-        i2cbuf.setNumber(NumberFormat.Float32LE, 1, n)
+        i2cbuf.setNumber(NumberFormat.Float32LE, 1, Wheelbase)
         pins.i2cWriteBuffer(N76_ADDR, i2cbuf)
-    }
-
+    } 
     /**
     * 設定加速度(公尺/秒)
     * @param acc 加速度, eg: 5
