@@ -23,14 +23,12 @@
     "BitRacerPro2.saveDataType.theta|block": "角度",
     "BitRacerPro2.printDataType.speedOrOmega|block": "速度或角速度",
     "BitRacerPro2.printDataType.posOrTheta|block": "位置或角度",
-
     "BitRacerPro2.motorRun|block": "馬達|%index 速度|%PWM",
     "BitRacerPro2.readIR|block": "讀取|%SensorID 感測器",
     "BitRacerPro2.readIR2|block": "讀取 第|%SensorID 顆 感測器",
     "BitRacerPro2.CalibrateBegin|block": "校正開始",
     "BitRacerPro2.CalibrateEnd|block": "校正結束|%Color (線)",
     "BitRacerPro2.readLine|block": "讀取線位置",
-
     "BitRacerPro2.SetZeropoint|block": "陀螺儀零點校正",
     "BitRacerPro2.ReadAngleZ|block": "讀取Z軸角度",
     "BitRacerPro2.ReadGyroZ|block": "讀取Z軸角速度",
@@ -39,13 +37,11 @@
     "BitRacerPro2.ObserverClear|block": "清除觀測器數值",
     "BitRacerPro2.ReadObserverDistance|block": "讀取估測距離(mm)",
     "BitRacerPro2.ReadObserverVelocity|block": "讀取估測速度(m/s)",
-    
     "BitRacerPro2.setIR|block": "車頭PID Kp|%Kp Ki|%Ki Kd|%Kd",
     "BitRacerPro2.setPos|block": "位置PID Kp|%Kp Ki|%Ki Kd|%Kd",
     "BitRacerPro2.setTheta|block": "角度PID Kp|%Kp Ki|%Ki Kd|%Kd",
     "BitRacerPro2.saveData|block": "儲存|%Type相關資料",
     "BitRacerPro2.writeData|block": "序列 寫入|%Type |%n筆資料",
-
     "BitRacerPro2.setWheel|block": "輪直徑(mm)|%diameter 輪距(mm)|%Wheelbase",
     "BitRacerPro2.setAccAlpha|block": "加速度(m/s2)|%acc 角加速度(m/s2)|%alpha",
     "BitRacerPro2.carControl|block": "自走車控制 |%status",

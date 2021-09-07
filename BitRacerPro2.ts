@@ -410,7 +410,7 @@ namespace BitRacerPro2 {
     //% weight=15 group="PID"
     //% block="write|%Type |%n" advanced=true
     //% n.min=0 n.max=1500
-    export function writeData(Type:printDataType,n: number): void {
+    export function writeData(Type: printDataType, n: number): void {
         pins.i2cWriteNumber(N76_ADDR, 0x4E + Type, NumberFormat.UInt8LE, false)
         for (let index = 0; index < n; index++) {
             let data: number[] = []
