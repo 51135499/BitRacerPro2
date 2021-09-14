@@ -187,9 +187,8 @@ namespace BitRacerPro2 {
     //% color=#2080ff
     //% weight=27 
     //% block="IR Read Mode |%mode"
-    export function readIRMode(mode: IRMode): number {
+    export function readIRMode(mode: IRMode): void {
         pins.i2cWriteNumber(N76_ADDR, 0x0C + mode, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
     }
 
 
