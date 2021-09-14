@@ -414,8 +414,8 @@ namespace BitRacerPro2 {
         pins.i2cWriteNumber(N76_ADDR, 0x4E + Type, NumberFormat.UInt8LE, false)
         for (let index = 0; index < n; index++) {
             let data: number[] = []
-            data[0] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
-            data[1] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 1000000) / 1000000
+            data[0] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 10000) / 10000
+            data[1] = Math.round(pins.i2cReadNumber(16, NumberFormat.Float32LE, false) * 10000) / 10000
             serial.writeNumbers(data)
             basic.pause(10)
         }
