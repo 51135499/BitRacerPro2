@@ -73,6 +73,12 @@ namespace BitRacerPro2 {
         //% block="PositionOrTheta"
         posOrTheta = 0x01
     }
+    export enum IRMode {
+        //% block="ADC"
+        ADC = 0x00,
+        //% block="Nor"
+        Nor = 0x01
+    }
     /**
     * 控制馬達
     * @param index 馬達選擇
@@ -173,6 +179,16 @@ namespace BitRacerPro2 {
     //% block="read Line position"
     export function readLine(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x08, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
+    }
+    /**
+    * 紅外線讀取模式
+    */
+    //% color=#2080ff
+    //% weight=27 
+    //% block="IR Read Mode |%mode"
+    export function readIRMode(mode: IRMode): number {
+        pins.i2cWriteNumber(N76_ADDR, 0x0C + mode, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
     }
 
