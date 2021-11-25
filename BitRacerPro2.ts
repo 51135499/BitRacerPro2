@@ -1,9 +1,3 @@
-enum PingUnit {
-    //% block="μs"
-    MicroSeconds,
-    //% block="cm"
-    Centimeters
-}
 //% weight=0 color=#f98020 icon="\uf1ba" block="BitRacerPro"
 namespace BitRacerPro2 {
     export const N76_ADDR = 0x10
