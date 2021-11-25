@@ -173,7 +173,7 @@ namespace BitRacerPro2 {
     //% block="read Line position"
     export function readLine(): number {
         pins.i2cWriteNumber(N76_ADDR, 0x08, NumberFormat.UInt8LE, false)
-        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false)
+        return pins.i2cReadNumber(N76_ADDR, NumberFormat.Int16LE, false) / 1000
     }
     /**
     * 紅外線讀取模式
